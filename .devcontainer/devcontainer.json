@@ -1,5 +1,15 @@
 {
     "dockerComposeFile": ["../compose.yaml", "compose.yaml"],
     "service": "app",
-    "workspaceFolder": "/app/"
+    "workspaceFolder": "/app/",
+    "customizations": {
+        "vscode": {
+          "extensions": [
+            "ms-vscode.cpptools-extension-pack",
+            "ms-vscode.makefile-tools",
+            "shardulm94.trailing-spaces",
+            "donjayamanne.githistory"
+          ]
+        }
+      }
 }
