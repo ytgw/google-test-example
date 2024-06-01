@@ -1,5 +1,8 @@
 services:
   app:
-    build: '.'
+    build:
+      context: '.'
+      args:
+        UID: '1000'  # 実行ユーザーのUIDにする
     volumes:
       - './:/app/:rw'
