@@ -29,12 +29,22 @@ clean:
 	rm -rf $(BUILD_DIR)
 	@-echo '---------- end $@ ----------'
 
+# 共有オブジェクトをリンク?してもコンパイルは成功する。
+# 共有オブジェクトのディレクトリを実行時に指定してもスタブコードが実行される。
 build: $(TEST_OBJS) $(PRODUCT_OBJS)
 	@-echo '---------- start $@ ----------'
-	$(CXX) -o $(TARGET) $^ -lgtest_main -lgtest -lpthread
+	$(CXX) -o $(TARGET) $^ -lgtest_main -lgtest -lpthread -L../mylib/lib -lmylib
 	@-echo '---------- end $@ ----------'
 
 test: build
+	@-echo '##################################################'
+	@-echo '# SET LD_LIBRARY_PATH'
+	@-echo '##################################################'
+	LD_LIBRARY_PATH=../mylib/lib $(TARGET)
+
+	@-echo '##################################################'
+	@-echo '# NOT SET LD_LIBRARY_PATH'
+	@-echo '##################################################'
 	$(TARGET)
 
 $(TEST_BUILD_DIR)/%.o: %.cpp
