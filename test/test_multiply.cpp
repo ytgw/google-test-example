@@ -12,12 +12,12 @@ void print_int(const int actual_input) {
     printf("stub of print_int: (actual arg, expected arg) = (%d, %d)\n", actual_input, expected_input);
 }
 
-TEST(Mock, Multiply1) {
+TEST(Stub, Multiply1) {
     expected_input = 6;
     print_multiply(2, 3);
 }
 
-TEST(Mock, Multiply2) {
+TEST(Stub, Multiply2) {
     expected_input = 12;
     print_multiply(4, 3);
 }
