@@ -4,6 +4,7 @@
 # https://tex2e.github.io/blog/makefile/functions
 
 CXX          = g++
+CXX_FLAFS    = -Wall
 INCLUDE_DIRS = -I ../mylib/include -I include
 LIB_DIRS     = -L ../mylib/lib
 LIBS         = -l mylib
@@ -25,12 +26,12 @@ clean:
 
 build: $(OBJS)
 	@-echo '---------- start $@ ----------'
-	$(CXX) -o $(TARGET) $^ $(LIB_DIRS) $(LIBS)
+	$(CXX) -o $(TARGET) $^ $(CXX_FLAFS) $(LIB_DIRS) $(LIBS)
 	@-echo '---------- end $@ ----------'
 
 $(BUILD_DIR)/%.o: %.cpp
 	@-mkdir -p $(BUILD_DIR)
-	$(CXX) -o $@ -c $^ $(INCLUDE_DIRS)
+	$(CXX) -o $@ -c $^ $(CXX_FLAFS) $(INCLUDE_DIRS)
 
 run:
 	LD_LIBRARY_PATH=../mylib/lib $(TARGET)

@@ -1,4 +1,5 @@
 CXX          = g++
+CXX_FLAFS    = -Wall
 INCLUDE_DIRS = -I include
 LIB_DIR      = lib
 LIB_PATH     = $(LIB_DIR)/libmylib.so
@@ -14,4 +15,4 @@ clean:
 # @-をつけると実行するコマンドを表示しない
 build: $(SRCS)
 	@-mkdir -p $(LIB_DIR)
-	$(CXX) -shared -fPIC -o $(LIB_PATH) $^ $(INCLUDE_DIRS)
+	$(CXX) -shared -fPIC -o $(LIB_PATH) $^ $(CXX_FLAFS) $(INCLUDE_DIRS)

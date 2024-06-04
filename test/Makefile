@@ -1,4 +1,5 @@
 CXX             = g++
+CXX_FLAFS       = -Wall
 INCLUDE_DIRS    = -I include -I $(PRODUCT_SRC_DIR)/include -I ../mylib/include
 
 BUILD_DIR         = build
@@ -33,7 +34,7 @@ clean:
 # 共有オブジェクトのディレクトリを実行時に指定してもスタブコードが実行される。
 build: $(TEST_OBJS) $(PRODUCT_OBJS)
 	@-echo '---------- start $@ ----------'
-	$(CXX) -o $(TARGET) $^ -lgtest_main -lgtest -lpthread -L../mylib/lib -lmylib
+	$(CXX) -o $(TARGET) $^ $(CXX_FLAFS) -lgtest_main -lgtest -lpthread -L../mylib/lib -lmylib
 	@-echo '---------- end $@ ----------'
 
 test: build
@@ -49,8 +50,8 @@ test: build
 
 $(TEST_BUILD_DIR)/%.o: %.cpp
 	@-mkdir -p $(TEST_BUILD_DIR)
-	$(CXX) -o $@ -c $^ $(INCLUDE_DIRS)
+	$(CXX) -o $@ -c $^ $(CXX_FLAFS) $(INCLUDE_DIRS)
 
 $(PRODUCT_BUILD_DIR)/%.o: ../src/%.cpp
 	@-mkdir -p $(PRODUCT_BUILD_DIR)
-	$(CXX) -o $@ -c $^ $(INCLUDE_DIRS)
+	$(CXX) -o $@ -c $^ $(CXX_FLAFS) $(INCLUDE_DIRS)
