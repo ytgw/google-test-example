@@ -3,5 +3,5 @@
 
 
 void print_int(const int val) {
-    std::cout << "product function: " << val << std::endl;
+    std::cout << "product function of print_int: " << val << std::endl;
 }
