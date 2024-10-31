@@ -7,6 +7,10 @@
 #include "substract.hpp"
 #include "make_string.hpp"
 
+#ifndef APP_VERSION
+#define APP_VERSION "UnknownVersion"
+#endif
+const std::string appVersion = APP_VERSION;
 
 void printTime(
     const std::string& head,
@@ -20,6 +24,7 @@ void printTime(
 
 
 int main(void) {
+    std::cout << "APP_VERSION: " << appVersion << std::endl;
     std::cout << "add result: " << add(1, 2) << std::endl;
 
     std::cout << "multiply result: ";

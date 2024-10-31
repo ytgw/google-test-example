@@ -3,8 +3,10 @@
 # Makefile の関数一覧
 # https://tex2e.github.io/blog/makefile/functions
 
+APP_VERSION = $(shell git show --format='%h' --no-patch)
+
 CXX          = g++
-CXX_FLAFS    = -Wall
+CXX_FLAFS    = -Wall -DAPP_VERSION=\"$(APP_VERSION)\"
 INCLUDE_DIRS = -I ../mylib/include -I include
 LIB_DIRS     = -L ../mylib/lib
 LIBS         = -l mylib
