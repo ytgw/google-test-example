@@ -10,7 +10,11 @@
 #ifndef APP_VERSION
 #define APP_VERSION "UnknownVersion"
 #endif
+#ifndef GIT_STATUS
+#define GIT_STATUS "UnknownGitStatus"
+#endif
 const std::string appVersion = APP_VERSION;
+const std::string gitStatus = GIT_STATUS;
 
 void printTime(
     const std::string& head,
@@ -24,7 +28,8 @@ void printTime(
 
 
 int main(void) {
-    std::cout << "APP_VERSION: " << appVersion << std::endl;
+    std::cout << "appVersion: " << appVersion << std::endl;
+    std::cout << "gitStatus: " << gitStatus << std::endl;
     std::cout << "add result: " << add(1, 2) << std::endl;
 
     std::cout << "multiply result: ";

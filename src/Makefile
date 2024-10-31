@@ -3,10 +3,11 @@
 # Makefile の関数一覧
 # https://tex2e.github.io/blog/makefile/functions
 
-APP_VERSION = $(shell git show --format='%h' --no-patch)
+APP_VERSION = "$(shell git show --format='%h' --no-patch)"
+GIT_STATUS = "$(shell git status --porcelain)"
 
 CXX          = g++
-CXX_FLAFS    = -Wall -DAPP_VERSION=\"$(APP_VERSION)\"
+CXX_FLAFS    = -Wall -DAPP_VERSION=\"$(APP_VERSION)\"  -DGIT_STATUS=\"$(GIT_STATUS)\"
 INCLUDE_DIRS = -I ../mylib/include -I include
 LIB_DIRS     = -L ../mylib/lib
 LIBS         = -l mylib
