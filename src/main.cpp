@@ -28,8 +28,7 @@ void printTime(
 
 
 int main(void) {
-    std::cout << "appVersion: " << appVersion << std::endl;
-    std::cout << "gitStatus: " << gitStatus << std::endl;
+    std::cout << "appVersion=" + appVersion + ", gitStatus=" + gitStatus<< std::endl;
     std::cout << "add result: " << add(1, 2) << std::endl;
 
     std::cout << "multiply result: ";
