@@ -3,8 +3,10 @@
 # Makefile の関数一覧
 # https://tex2e.github.io/blog/makefile/functions
 
-APP_VERSION = "$(shell git show --format='%h' --no-patch)"
-GIT_STATUS = "$(shell git status --porcelain)"
+# gitコマンドがあればコミットハッシュを、なければunknownを代入
+APP_VERSION = "$(shell if (type git > /dev/null 2>&1); then git show --format='%h' --no-patch; else echo unknown; fi)"
+# gitコマンドがあればstatusを、なければunknownを代入
+GIT_STATUS = "$(shell if (type git > /dev/null 2>&1); then git status --porcelain; else echo unknown; fi)"
 
 CXX          = g++
 CXX_FLAFS    = -Wall -DAPP_VERSION=\"$(APP_VERSION)\"  -DGIT_STATUS=\"$(GIT_STATUS)\"
